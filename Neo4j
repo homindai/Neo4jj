@@ -1,0 +1,46 @@
+
+CREATE
+(sv1:PLAYER{name:"Văn Ánh", age: 22, height: 1.71, weight: 90}),
+(sv2:PLAYER{name:"Minh Đại", age: 20, height: 1.61, weight: 45}),
+(sv3:PLAYER{name:"Văn Đức", age: 22, height: 1.71, weight: 90}),
+(sv4:PLAYER{name:"Quang Minh", age: 22, height: 1.67, weight: 60}),
+(sv5:PLAYER{name:"Vĩnh Toàn", age: 19, height: 1.51, weight: 40}),
+(sv6:PLAYER{name:"Thái Thiên", age: 22, height: 1.71, weight:80}),
+(sv7:PLAYER{name:"Thành Nguyên", age: 24, height: 1.91, weight: 100}),
+(sv8:PLAYER{name:"Văn Ngọc", age: 22, height: 1.77, weight: 74}),
+(sv9:PLAYER{name:"Trọng Tín", age: 20, height: 1.87, weight: 84}),
+
+(dc1:COACH{name: "T.Huynh"}),
+(dc2:COACH{name: "T.Khai"}),
+(dc3:COACH{name: "T.Trung"}),
+
+(tm1:TEAM{name:”LT.Bình”}),
+(tm2:TEAM{name:"LT.Trọng"}),
+(tm3:TEAM{name:"LT.Nam"}),
+
+(sv1)-[:TEAMMATES]->(tm1),
+(sv2)-[:TEAMMATES]->(tm1),
+(sv3)-[:TEAMMATES]->(tm1),
+(sv4)-[:TEAMMATES]->(tm2),
+(sv5)-[:TEAMMATES]->(tm2),
+(sv6)-[:TEAMMATES]->(tm2),
+(sv7)-[:TEAMMATES]->(tm3),
+(sv8)-[:TEAMMATES]->(tm3),
+(sv9)-[:TEAMMATES]->(tm3),
+
+(tm1)-[:COACHES]->(dc1),
+(tm2)-[:COACHES]->(dc2),
+(tm3)-[:COACHES]->(dc3);
+
+// Tạo 
+CREATE (ht:Principal{name: "Thầy Hiệu Trưởng"});
+
+// Gắn hiệu trưởng vào các thẻ
+MATCH (ht:Principal), (coach:COACH)
+WHERE coach.name IN ["T.Huynh", "T.Khai", "T.Trung"]
+CREATE (ht)-[:IS_PRINCIPAL_OF]->(coach);
+
+
+
+
+
