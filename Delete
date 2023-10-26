@@ -1,0 +1,11 @@
+// Deleting a Node (Not going to work)
+MATCH(ja {name: "..."})
+DELETE ja
+
+// Delete node and relationships
+MATCH(ja {name: "..."})
+DETACH DELETE ja
+
+// Delete relationship
+MATCH(joel {name: "..."}) - [rel:PLAYS_FOR] -> (:TEAM)
+DELETE rel
