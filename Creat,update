@@ -1,0 +1,24 @@
+CREATE (lebron:PLAYER:COACH:GENERAL_MANAGER { name: "...", height: 2.01 })
+
+
+MATCH (n) 
+WHERE ID(n) = 3
+SET n.age = 24, n.height = 2.02
+RETURN n
+
+MATCH (lebron)
+WHERE ID(n) = 3
+SET lebron:REF
+RETURN lebron
+
+
+
+MATCH (lebron)
+WHERE ID(n) = 3
+REMOVE lebron:REF
+RETURN lebron
+
+MATCH (lebron)
+WHERE ID(n) = 3
+REMOVE lebron.age
+RETURN lebron
